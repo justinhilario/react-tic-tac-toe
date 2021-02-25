@@ -51,10 +51,14 @@ class App extends Component{
 	return null;
 }
 
+
+// farm, food, avengers, covid, health vs junk
+// select tag and .map the array
+
   handleGamePlay = (index) => {
-    const { squares, playersTurn, playerOne, playerTwo, winCombo } = this.state
+    const { squares, playersTurn, playerTwo } = this.state
     if(playerTwo.length === 4){
-      setTimeout(function () {alert("Draw game")}, 300 )
+      setTimeout(function () {alert("DRAW")}, 300 )
     } else if(playersTurn === 1) {
       if(squares[index] === null){
         squares[index] = '❌'
@@ -88,11 +92,8 @@ class App extends Component{
   render(){
     return(
       <>
-        <h1>Tic Tac Toe</h1>
-        {
-          this.state.playersTurn &&
-          <h3>Player {this.state.playersTurn}'s Turn</h3>
-        }
+        <h1>HEALTHY VS JUNK</h1>
+       
         <div className='gameboard'>
           { this.state.squares.map((value, index) => {
             return (
@@ -105,7 +106,11 @@ class App extends Component{
             )
           })}
         </div>
-        <button onClick = { this.resetGameboard }> </button>
+        {
+          this.state.playersTurn &&
+          <h3>PLAYER {this.state.playersTurn}'S TURN</h3>
+        }
+        <button onClick = { this.resetGameboard }> Clear Table</button>
       </>
     )
   }
