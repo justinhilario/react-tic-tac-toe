@@ -19,7 +19,7 @@ class App extends Component{
         [2,5,8],
         [0,4,8],
         [2,4,6]  
-        ]
+      ]
     }
   }
   // push joined numbers into players empty arrays, if theres a winning combo, have an includes that looks for that
@@ -53,32 +53,46 @@ class App extends Component{
 
   handleGamePlay = (index) => {
     const { squares, playersTurn, playerOne, playerTwo, winCombo } = this.state
-    if(playersTurn === 1) {
-      squares[index] = '❌'
-          this.setState({squares: squares, playersTurn: playersTurn + 1, playerOne: [...this.state.playerOne, index]})
-          if (this.calculateWinner(squares) !==  null){
-            this.setState({ playersTurn: 0 })
-            setTimeout(function () {alert("YOU WON!")}, 300 )
-          } 
-    } else if(playersTurn === 2) {
-      squares[index] = '⭕️'
-      this.setState({ squares: squares, playersTurn: playersTurn - 1, playerTwo: [...this.state.playerTwo, index]})
+    if(playerTwo.length === 4){
+      setTimeout(function () {alert("Draw game")}, 300 )
+    } else if(playersTurn === 1) {
+      if(squares[index] === null){
+        squares[index] = '❌'
+        this.setState({squares: squares, playersTurn: playersTurn + 1, playerOne: [...this.state.playerOne, index]})
+      } else {
+        alert("Pick an empty square")
+      }
       if (this.calculateWinner(squares) !==  null){
-        this.setState({ playersTurn: 0 })
-        setTimeout(function () {alert("YOU WON!")}, 300 )
+        this.setState({ playersTurn: false })
+        setTimeout(function () {alert("❌ WON!")}, 300 )
+      } 
+    } else if(playersTurn === 2) {
+      if(squares[index] === null){
+        squares[index] = '⭕️'
+        this.setState({ squares: squares, playersTurn: playersTurn - 1, playerTwo: [...this.state.playerTwo, index]})
+      }else {
+        alert('Pick an empty square')
+      }
+      if (this.calculateWinner(squares) !==  null){
+        this.setState({ playersTurn: false })
+        setTimeout(function () {alert("⭕️ WON!")}, 300 )
       } 
     }
   }
 
 
   resetGameboard = () => {
-    
+    this.setState({ squares: [null, null, null, null, null, null, null, null, null], playersTurn: 1, playerOne: [], playerTwo: [] })
   }
 
   render(){
     return(
       <>
         <h1>Tic Tac Toe</h1>
+        {
+          this.state.playersTurn &&
+          <h3>Player {this.state.playersTurn}'s Turn</h3>
+        }
         <div className='gameboard'>
           { this.state.squares.map((value, index) => {
             return (
@@ -91,7 +105,7 @@ class App extends Component{
             )
           })}
         </div>
-        <button onClick = { this.render}> </button>
+        <button onClick = { this.resetGameboard }> </button>
       </>
     )
   }
