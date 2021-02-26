@@ -63,3 +63,19 @@ button {
 .junk{
   font-family: 'Schoolbell', cursive;
 }
+
+.selects{
+  color: #FFC72C;
+  font-size: 20px;
+  text-shadow: 1px 1px #DA291C;
+  font-weight: 600;
+  /* display: inline-block; */
+  margin: 0, auto;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+label {
+  /* margin-left: 10px; */
+  margin-right: 10px;
+}
