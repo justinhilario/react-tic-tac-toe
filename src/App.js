@@ -10,6 +10,8 @@ class App extends Component{
       playersTurn: 1,
       playerOne:[],
       playerTwo: [],
+      playerOneChoice: "🍏",
+      playerTwoChoice: "🍩",
       winCombo: [ 
         [0,1,2],
         [3,4,5],
@@ -94,13 +96,13 @@ class App extends Component{
       <>
         <h1><span className='healthy'>HEALTHY </span> vs <span className='junk'> JUNK</span></h1>
        <label> Choose Player One:</label>
-       <select >
-         <option> A </option>
-         <option> B </option>
-         <option> C </option>
+       <select value={this.state.playerOneChoice} >
+         <option value="🥑"> 🥑 </option>
+         <option value="🥦"> 🥦 </option>
+         <option value="🥬"> 🥬 </option>
        </select>
        <label> Choose Player Two:</label>
-       <select >
+       <select value= {this.state.playerTwoChoice} >
          <option> A </option>
          <option> B </option>
          <option> C </option>
