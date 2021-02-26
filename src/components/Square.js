@@ -9,8 +9,8 @@ class Square extends Component{
   render(){
     return(
       <>
-        <div className="square" onClick={ this.handleClick }>
-          {this.props.value}
+        <div className='square' onClick={ this.handleClick }>
+          <p className='value'>{this.props.value}</p>
         </div>
       </>
     )

@@ -61,25 +61,25 @@ class App extends Component{
       setTimeout(function () {alert("DRAW")}, 300 )
     } else if(playersTurn === 1) {
       if(squares[index] === null){
-        squares[index] = '❌'
+        squares[index] = '🍏'
         this.setState({squares: squares, playersTurn: playersTurn + 1, playerOne: [...this.state.playerOne, index]})
       } else {
         alert("Pick an empty square")
       }
       if (this.calculateWinner(squares) !==  null){
         this.setState({ playersTurn: false })
-        setTimeout(function () {alert("❌ WON!")}, 300 )
+        setTimeout(function () {alert("🍏 WON!")}, 300 )
       } 
     } else if(playersTurn === 2) {
       if(squares[index] === null){
-        squares[index] = '⭕️'
+        squares[index] = '🍩'
         this.setState({ squares: squares, playersTurn: playersTurn - 1, playerTwo: [...this.state.playerTwo, index]})
       }else {
         alert('Pick an empty square')
       }
       if (this.calculateWinner(squares) !==  null){
         this.setState({ playersTurn: false })
-        setTimeout(function () {alert("⭕️ WON!")}, 300 )
+        setTimeout(function () {alert("🍩 WON!")}, 300 )
       } 
     }
   }
@@ -92,7 +92,7 @@ class App extends Component{
   render(){
     return(
       <>
-        <h1>HEALTHY VS JUNK</h1>
+        <h1><span className='healthy'>HEALTHY </span> vs <span className='junk'> JUNK</span></h1>
        
         <div className='gameboard'>
           { this.state.squares.map((value, index) => {
@@ -107,8 +107,8 @@ class App extends Component{
           })}
         </div>
         {
-          this.state.playersTurn &&
-          <h3>PLAYER {this.state.playersTurn}'S TURN</h3>
+          this.state.playersTurn ?
+          <h3>PLAYER {this.state.playersTurn}'S TURN</h3> : <h3>Game Over!</h3>
         }
         <button onClick = { this.resetGameboard }> Clear Table</button>
       </>
