@@ -51,9 +51,9 @@ class App extends Component{
 	return null;
 }
 
-
-// farm, food, avengers, covid, health vs junk
+//character picker logic
 // select tag and .map the array
+// we want an array of selectable emojis, and then we want a select(dropdown), and set the user input to state. state object and maybe onClick. 
 
   handleGamePlay = (index) => {
     const { squares, playersTurn, playerTwo } = this.state
@@ -93,7 +93,18 @@ class App extends Component{
     return(
       <>
         <h1><span className='healthy'>HEALTHY </span> vs <span className='junk'> JUNK</span></h1>
-       
+       <label> Choose Player One:</label>
+       <select >
+         <option> A </option>
+         <option> B </option>
+         <option> C </option>
+       </select>
+       <label> Choose Player Two:</label>
+       <select >
+         <option> A </option>
+         <option> B </option>
+         <option> C </option>
+       </select>
         <div className='gameboard'>
           { this.state.squares.map((value, index) => {
             return (
