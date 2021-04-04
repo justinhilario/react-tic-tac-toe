@@ -26,22 +26,14 @@ class App extends Component{
       [0, 4, 8],
       [2, 4, 6],
     ];
-    winCombo.forEach((value, index) => {
-      const [a, b, c] = winCombo[index];
-        if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-          return squares[a];
-        }
-      })
-      return null;
-    }
-//   for (let i = 0; i < winCombo.length; i++) {
-// 		const [a, b, c] = winCombo[i];
-// 		if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-// 			return squares[a];
-// 		}
-// 	}
-// 	return null;
-// }
+  for (let i = 0; i < winCombo.length; i++) {
+		const [a, b, c] = winCombo[i];
+		if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+			return squares[a];
+		}
+	}
+	return null;
+}
 
   handleGamePlay = (index) => {
     const { squares, playersTurn, playerTwo } = this.state
@@ -56,7 +48,7 @@ class App extends Component{
       }
       if (this.calculateWinner(squares) !==  null){
         this.setState({ playersTurn: false })
-        setTimeout(function () {alert(`${this.state.playerOneChoice} WON!`)}, 300 )
+        // setTimeout(function () {alert(`${this.state.playerOneChoice}  WON!`)} )
       } 
     } else if(playersTurn === 2) {
       if(squares[index] === null){
@@ -67,7 +59,7 @@ class App extends Component{
       }
       if (this.calculateWinner(squares) !==  null){
         this.setState({ playersTurn: false })
-        setTimeout(function () {alert(`${this.state.playerTwoChoice}  WON!`)}, 300 )
+        // setTimeout(function () {alert(`${this.state.playerTwoChoice}  WON!`)}, 300 )
       } 
     }
   }
